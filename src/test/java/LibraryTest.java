@@ -3,14 +3,12 @@ import org.junit.jupiter.api.Test;
 
 import java.util.ArrayList;
 import java.util.List;
-import java.util.PriorityQueue;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
 class LibraryTest {
 
     List<Book> bookList;
-    PriorityQueue<User> borrowersQueue = new PriorityQueue<>();
 
     Library library;
 
@@ -63,26 +61,40 @@ class LibraryTest {
     }
 
     @Test
-    void lendBook() {
+    void lendBookImplementation1() {
 
-        borrowersQueue.add(new User("John", "Fredo", "student", "junior", 3));
-        borrowersQueue.add(new User("Lota", "Benard", "teacher", "nil", 1));
-        borrowersQueue.add(new User("Tom", "Frank", "student", "senior", 2));
-        borrowersQueue.add(new User("FredT", "Hayman", "teacher", "nil", 1));
+        library.borrowersQueue.add(new User("John", "Fredo", "student", "junior", 3));
+        library.borrowersQueue.add(new User("Lota", "Benard", "teacher", "nil", 1));
+        library.borrowersQueue.add(new User("Tom", "Frank", "student", "senior", 2));
+        library.borrowersQueue.add(new User("FredT", "Hayman", "teacher", "nil", 1));
 
-        User user = borrowersQueue.peek();
-        System.out.println("Top of the Queue: " + borrowersQueue.peek());
+        User user = library.borrowersQueue.peek();
+        System.out.println("Top of the Queue: " + library.borrowersQueue.peek());
 
         System.out.println("Before Lending: \n" + library.showCatalogue());
 
-        assertEquals("Successful. You have just issued a copy of Ulysses to Lota", library.lendBook("Ulysses", user));
+        assertEquals("Successful. You have just issued a copy of Ulysses to Lota", library.lendBookImplementation1("Ulysses", user));
 
         System.out.println("After Lending: \n" + library.showCatalogue());
 
     }
 
     @Test
-    void returnBook() {
+    void lendBookImplementation2() {
+
+        library.normalQueue.add(new User("John", "Fredo", "student", "junior", 3));
+        library.normalQueue.add(new User("Lota", "Benard", "teacher", "nil", 1));
+        library.normalQueue.add(new User("Tom", "Frank", "student", "senior", 2));
+        library.normalQueue.add(new User("FredT", "Hayman", "teacher", "nil", 1));
+
+        User user = library.normalQueue.peek();
+        System.out.println("Top of the Queue: " + library.normalQueue.peek());
+
+        System.out.println("Before Lending: \n" + library.showCatalogue());
+
+        assertEquals("Successful. You have just issued a copy of Ulysses to John", library.lendBookImplementation1("Ulysses", user));
+
+        System.out.println("After Lending: \n" + library.showCatalogue());
 
     }
 }

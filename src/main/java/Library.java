@@ -1,9 +1,14 @@
+import java.util.LinkedList;
 import java.util.List;
+import java.util.PriorityQueue;
+import java.util.Queue;
 
 public class Library {
 
     private List<Book> bookCatalogue;
-    private List<User> borrowersList;
+//    private List<User> borrowersList;
+    PriorityQueue<User> borrowersQueue = new PriorityQueue<>();
+    Queue<User> normalQueue = new LinkedList<>();
     private Book book;
 
     public Library(List<Book> bookCatalogue) {
@@ -24,14 +29,9 @@ public class Library {
         book.setCount(1);
     }
 
-    public void joinQueue(String bookName, User user) {
-
-    }
-
-    public String lendBook(String bookName, User user) {
+    public String lendBookImplementation1(String bookName, User user) {
 
         for (Book bk : bookCatalogue) {
-//            System.out.println("Titles: " + bk.getTitle());
             if (bk.getTitle().equals(bookName)) {
                 if (bk.getCount() > 0) {
                     bk.setCount(-1);
@@ -39,20 +39,30 @@ public class Library {
                 }
             }
         }
-        return bookName + " is currently out of stock";
+        return "Book Taken";
     }
 
-    public void returnBook(String name) {
+    public String lendBookImplementation2(String bookName, User user) {
 
+        for (Book bk : bookCatalogue) {
+            if (bk.getTitle().equals(bookName)) {
+                if (bk.getCount() > 0) {
+                    bk.setCount(-1);
+                    return "Successful. You have just issued a copy of " + bk.getTitle() + " to " + user.getFirstName();
+                }
+            }
+        }
+        return "Book Taken";
     }
+
 
     public List<Book> getBookCatalogue() {
         return bookCatalogue;
     }
 
-    public List<User> getBorrowersList() {
-        return borrowersList;
-    }
+//    public List<User> getBorrowersList() {
+//        return borrowersList;
+//    }
 
     public void setBookCatalogue(List<Book> bookCatalogue) {
         this.bookCatalogue = bookCatalogue;
