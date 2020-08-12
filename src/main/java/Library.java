@@ -3,10 +3,8 @@ import java.util.*;
 public class Library {
 
     private List<Book> bookCatalogue;
-//    private List<User> borrowersList;
-    Map<User, String> bookRequest = new HashMap<>();
+
     Queue<User> normalQueue = new LinkedList<>();
-    private Book book;
 
     public Library(List<Book> bookCatalogue) {
         this.bookCatalogue = bookCatalogue;
@@ -30,17 +28,6 @@ public class Library {
     public String lendBookImplementation1(String bookName) {
 
         PriorityQueue<User> borrowersQueue = new PriorityQueue<>(normalQueue);
-
-        System.out.println("Normal: " + normalQueue);
-        System.out.println("bor: " + borrowersQueue);
-        System.out.println("Normal head: " + normalQueue.peek());
-        System.out.println("Bor head: " + borrowersQueue.peek());
-        System.out.println("Bor head: " + borrowersQueue.peek());
-        System.out.println("Bor head: " + borrowersQueue.peek());
-        System.out.println("Bor head: " + borrowersQueue.peek());
-
-        String name = borrowersQueue.peek().getFirstName();
-        System.out.println("NAME: " + name);
 
         for (Book bk : bookCatalogue) {
             if (bk.getTitle().equals(bookName)) {
