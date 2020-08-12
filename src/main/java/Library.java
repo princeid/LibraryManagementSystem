@@ -10,11 +10,18 @@ public class Library {
         this.bookCatalogue = bookCatalogue;
     }
 
-    // Increments the book count after adding if the book is already in the library
+    /**
+     *
+     * @param book An object of Book class
+     * @param title the title of the boook to add
+     * @param author the author of the book to add
+     * @return
+     */
     public String addBook(Book book, String title, String author) {
         for (Book bk : bookCatalogue) {
 
-            // Checks whether the book to add is already in the library catalogue using the author and book title
+            /* Checks whether the book to add is already in the library catalogue using the author and book title,
+            and if it is then the count is incremented by 1. Otherwise add the book to the library and set the count to 1. */
             if (bk.getTitle().equals(title) && bk.getAuthor().equals(author)) {
                 bk.setCount(1);
                 return "Successful. There're now " + bk.getCount() + " copies of '" + title + "' in the library.";
@@ -25,10 +32,17 @@ public class Library {
         return "Successful. There're now 1 copy of '" + title + "' in the library.";
     }
 
+    /**
+     *  First Implementation: The books are given by the Librarian based on priority
+     * @param bookName The name of the book to borrow
+     * @return
+     */
     public String lendBookImplementation1(String bookName) {
-
+    // The Priority Queue is used to store the order in which to assign a book based on the borrowers level
         PriorityQueue<User> borrowersQueue = new PriorityQueue<>(normalQueue);
 
+        /* Traversing through the book catalogue to check whether the book the user is requesting for is in the library and how many
+        copies are left. */
         for (Book bk : bookCatalogue) {
             if (bk.getTitle().equals(bookName)) {
                 if (bk.getCount() > 0) {
@@ -40,6 +54,11 @@ public class Library {
         return "Book Taken";
     }
 
+    /**
+     *  First Implementation: The books are given by the Librarian on a first come first serve basis
+     * @param bookName The name of the book to borrow
+     * @return
+     */
     public String lendBookImplementation2(String bookName) {
 
         for (Book bk : bookCatalogue) {
@@ -53,11 +72,7 @@ public class Library {
         return "Book Taken";
     }
 
-
-    public List<Book> getBookCatalogue() {
-        return bookCatalogue;
-    }
-
+    /* Returns the String format of the book catalogue. */
     public String showCatalogue() {
         String catalogue = "";
         for (Book bk : bookCatalogue) {

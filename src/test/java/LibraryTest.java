@@ -83,4 +83,12 @@ class LibraryTest {
 
         assertEquals("You have just issued a copy of Ulysses to John", library.lendBookImplementation2("Ulysses"));
     }
+
+    @Test
+    void getBookCatalogue() {
+    }
+
+    @Test
+    void showCatalogue() {
+    }
 }
