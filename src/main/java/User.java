@@ -38,6 +38,8 @@ public class User implements Comparable<User>{
         return "User{" + "firstName='" + firstName + '\'' + ", lastName='" + lastName + '\'' + ", occupation='" + occupation + '\'' + '}';
     }
 
+    /* Using Comparable Interface to compare users based on priority, i.e value of 1 has the highest priority,
+    followed by 2, and then 3*/
     @Override
     public int compareTo(User user) {
         return Integer.compare(this.value, user.value);
