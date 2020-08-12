@@ -1,19 +1,15 @@
 public class User implements Comparable<User>{
-    private String firstName;
-    private String lastName;
-    private String occupation;
-    private String level;
-    private int value;
+    private final String firstName;
+    private final String lastName;
+    private final String occupation;
+    private final String level;
+    private final int value;
 
     public User(String firstName, String lastName, String occupation, String level, int value) {
         this.firstName = firstName;
         this.lastName = lastName;
         this.occupation = occupation;
         this.level = level;
-        this.value = value;
-    }
-
-    public void setValue(int value) {
         this.value = value;
     }
 
@@ -44,14 +40,6 @@ public class User implements Comparable<User>{
 
     @Override
     public int compareTo(User user) {
-        if (this.value < user.value) {
-            return -1;
-        }
-        else if (this.value > user.value) {
-            return 1;
-        }
-        else {
-            return 0;
-        }
+        return Integer.compare(this.value, user.value);
     }
 }
