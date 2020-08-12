@@ -47,7 +47,7 @@ class LibraryTest {
                 () -> assertEquals("Successful. There're now 1 copy of 'One Hundred Years of Solitude' in the library.", library.addBook(book3, book3.getTitle(), book3.getAuthor()))
         );
 
-        System.out.println("Catalogue: \n" + library.showCatalogue());
+//        System.out.println("Catalogue: \n" + library.showCatalogue());
 
     }
 
@@ -85,10 +85,14 @@ class LibraryTest {
     }
 
     @Test
-    void getBookCatalogue() {
-    }
-
-    @Test
     void showCatalogue() {
+
+        library.addBook(book5, book5.getTitle(), book5.getAuthor());
+        library.addBook(book2, book2.getTitle(), book2.getAuthor());
+
+        assertEquals("Title: War and Peace\n" + "Author: Leo Tolstoy\n" + "Genre: Novel\n" + "Available: 1\n" + "\n" +
+                "Title: Ulysses\n" + "Author: James Joyce\n" + "Genre: Fiction\n" + "Available: 1\n" + "\n",
+                library.showCatalogue());
+
     }
 }
