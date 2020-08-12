@@ -4,7 +4,7 @@ public class Library {
 
     private List<Book> bookCatalogue;
 
-    Queue<User> normalQueue = new LinkedList<>();
+    public Queue<User> normalQueue = new LinkedList<>();
 
     public Library(List<Book> bookCatalogue) {
         this.bookCatalogue = bookCatalogue;
