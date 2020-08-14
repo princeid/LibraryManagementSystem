@@ -39,7 +39,7 @@ public class Library {
      */
     public String lendBookImplementation1(String bookName) {
     // The Priority Queue is used to store the order in which to assign a book based on the borrowers level
-        PriorityQueue<User> borrowersQueue = new PriorityQueue<>(normalQueue);
+        Queue<User> borrowersQueue = new PriorityQueue<>(normalQueue);
 
         /* Traversing through the book catalogue to check whether the book the user is requesting for is in the library and how many
         copies are left. */
